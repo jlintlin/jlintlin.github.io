@@ -1,17 +1,103 @@
 :root {
-    --primary-color: #ffffff;
-    --secondary-color: #2563eb;
-    --accent-color: #7c3aed;
-    --text-color: #475569;
-    --heading-color: #1e293b;
-    --background: #f8fafc;
-    --card-bg: rgba(255, 255, 255, 1);
+    /* Light Theme Variables */
+    --primary-color-light: #ffffff;
+    --secondary-color-light: #2563eb;
+    --accent-color-light: #7c3aed;
+    --text-color-light: #475569;
+    --heading-color-light: #1e293b;
+    --background-light: #f8fafc;
+    --card-bg-light: rgba(255, 255, 255, 1);
+    --glass-bg-light: rgba(255, 255, 255, 0.9);
+    --glass-border-light: rgba(226, 232, 240, 0.8);
+
+    /* Dark Theme Variables */
+    --primary-color-dark: #0f172a;
+    --secondary-color-dark: #22d3ee;
+    --accent-color-dark: #f472b6;
+    --text-color-dark: #94a3b8;
+    --heading-color-dark: #e2e8f0;
+    --background-dark: #0f172a;
+    --card-bg-dark: rgba(255, 255, 255, 0.03);
+    --glass-bg-dark: rgba(255, 255, 255, 0.03);
+    --glass-border-dark: rgba(255, 255, 255, 0.06);
+
+    /* Default Theme (Light) */
+    --primary-color: var(--primary-color-light);
+    --secondary-color: var(--secondary-color-light);
+    --accent-color: var(--accent-color-light);
+    --text-color: var(--text-color-light);
+    --heading-color: var(--heading-color-light);
+    --background: var(--background-light);
+    --card-bg: var(--card-bg-light);
+    --glass-bg: var(--glass-bg-light);
+    --glass-border: var(--glass-border-light);
+
+    /* Common Variables */
     --border-radius: 16px;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --glass-border: rgba(226, 232, 240, 0.8);
     --box-shadow: 0 4px 20px rgba(148, 163, 184, 0.1);
     --hover-shadow: 0 10px 30px rgba(148, 163, 184, 0.2);
+}
+
+/* Dark Theme Class */
+body.dark-theme {
+    --primary-color: var(--primary-color-dark);
+    --secondary-color: var(--secondary-color-dark);
+    --accent-color: var(--accent-color-dark);
+    --text-color: var(--text-color-dark);
+    --heading-color: var(--heading-color-dark);
+    --background: var(--background-dark);
+    --card-bg: var(--card-bg-dark);
+    --glass-bg: var(--glass-bg-dark);
+    --glass-border: var(--glass-border-dark);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--hover-shadow);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    transition: var(--transition);
+}
+
+/* Contact Info Styles */
+.contact-info {
+    opacity: 0.1;
+    transition: var(--transition);
+}
+
+.contact-info:hover {
+    opacity: 1;
+}
+
+.contact-teaser {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    opacity: 0.7;
 }
 
 * {

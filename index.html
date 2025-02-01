@@ -15,6 +15,10 @@
 </head>
 
 <body>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <nav class="navbar">
         <div class="nav-content">
             <span class="nav-name">Jie Lin</span>
@@ -34,11 +38,13 @@
             <p class="subtitle">Ph.D. Candidate in Computer Science</p>
             <p class="focus">Specializing in Large Language Models & Security Research</p>
             <div class="contact-info">
-                <a href="tel:484-548-8618"><i class="fas fa-phone"></i> 484-548-8618</a>
-                <a href="mailto:Jie.Lin@ucf.edu"><i class="fas fa-envelope"></i> Jie.Lin@ucf.edu</a>
+                <a href="tel:484-548-8618" class="contact-link"><i class="fas fa-phone"></i> Contact by Phone</a>
+                <a href="mailto:Jie.Lin@ucf.edu" class="contact-link"><i class="fas fa-envelope"></i> Contact by
+                    Email</a>
                 <a href="https://linkedin.com/in/jie-lin-681421129/" target="_blank"><i class="fab fa-linkedin"></i>
                     LinkedIn</a>
             </div>
+            <p class="contact-teaser">Hover above to reveal contact information</p>
         </div>
     </header>
 
@@ -241,6 +247,41 @@
     <footer>
         <p>&copy; 2025 Jie Lin. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+
+            // Update icon
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Contact Info Display
+        const contactLinks = document.querySelectorAll('.contact-link');
+        contactLinks.forEach(link => {
+            const originalText = link.getAttribute('href').includes('tel:') ?
+                '484-548-8618' : 'Jie.Lin@ucf.edu';
+            const displayText = link.textContent;
+
+            link.addEventListener('mouseenter', () => {
+                link.innerHTML = `<i class="${link.querySelector('i').className}"></i> ${originalText}`;
+            });
+
+            link.addEventListener('mouseleave', () => {
+                link.innerHTML = `<i class="${link.querySelector('i').className}"></i> ${displayText}`;
+            });
+        });
+    </script>
 </body>
 
 </html>
