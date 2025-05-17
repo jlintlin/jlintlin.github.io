@@ -23,6 +23,13 @@
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+  </style>
 </head>
 <body class="font-sans text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900 transition-colors">
   <div id="root"></div>
@@ -48,8 +55,8 @@
           >
             {dark ? '☀' : '🌙'}
           </button>
-          <header className="min-h-screen flex flex-col items-center justify-center text-center space-y-4 px-4">
-            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-fuchsia-500">
+          <header className="min-h-screen flex flex-col items-center justify-center text-center space-y-4 px-4 animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-sky-500 to-fuchsia-600">
               Jie Lin
             </h1>
             <p className="text-xl">Ph.D. Candidate in Computer Science</p>
@@ -57,8 +64,7 @@
             <div className="mt-6 backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-6 rounded-lg border border-white/40 dark:border-gray-600">
               {showContact ? (
                 <div className="space-y-2">
-                  <a className="block hover:underline" href="tel:484-548-8618">484-548-8618</a>
-                  <a className="block hover:underline" href="mailto:Jie.Lin@ucf.edu">Jie.Lin@ucf.edu</a>
+                  <a className="block hover:underline" href="mailto:Jie.LinREMOVE_THIS@ucf.edu">Jie.LinREMOVE_THIS@ucf.edu</a>
                   <a className="block hover:underline" href="https://linkedin.com/in/jie-lin-681421129/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
               ) : (
@@ -72,18 +78,18 @@
               <h2 className="text-3xl font-semibold mb-4">Education</h2>
               <div className="space-y-4">
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 className="font-semibold">University of Central Florida</h3>
+                  <h3 className="font-semibold"><a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
                   <p className="text-sm">Aug. 2020 - Present — Ph.D. in Computer Science</p>
                   <p className="text-sm">Orlando, FL</p>
                   <p className="text-sm">Advisor: Dr. David Mohaisen</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 className="font-semibold">Emory University</h3>
+                  <h3 className="font-semibold"><a href="https://www.emory.edu" target="_blank" rel="noopener noreferrer">Emory University</a></h3>
                   <p className="text-sm">Sept. 2018 - May 2020 — Master of Science in Computer Science</p>
                   <p className="text-sm">Atlanta, GA</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 className="font-semibold">Ursinus College</h3>
+                  <h3 className="font-semibold"><a href="https://www.ursinus.edu" target="_blank" rel="noopener noreferrer">Ursinus College</a></h3>
                   <p className="text-sm">Aug. 2014 - May 2018 — Bachelor of Science in Computer Science and Mathematics</p>
                   <p className="text-sm">Collegeville, PA</p>
                   <p className="text-sm">Minor: Japanese</p>
@@ -94,20 +100,23 @@
             <section>
               <h2 className="text-3xl font-semibold mb-4">Research Publications</h2>
               <div className="space-y-4">
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection</h3>
                   <p className="text-sm">NDSS 2025, San Diego, CA – Feb 24–28, 2025</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
+                  <a className="text-sm underline" href="https://doi.org/10.14722/ndss.2025.241491" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows</h3>
-                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18-22, 2024</p>
+                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18–22, 2024</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
+                  <a className="text-sm underline" href="https://arxiv.org/abs/2502.00064" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web</h3>
                   <p className="text-sm">CCSW, ACM CCS 2023 – Copenhagen, Denmark</p>
                   <p className="text-sm">Mohamed Alqadhi, Mohammed Alkinoon, Jie Lin, Ahmed Abdalaal, David Mohaisen</p>
+                  <a className="text-sm underline" href="https://doi.org/10.1145/3605763.3625274" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
               </div>
             </section>
@@ -115,19 +124,32 @@
             <section>
               <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
               <div className="space-y-4">
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 className="font-semibold">Graduate Teaching Assistant - University of Central Florida</h3>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Graduate Teaching Assistant - <a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
                   <p className="text-sm">Orlando, FL — Fall 2021 - Present</p>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">Founder and Manager - TLin Investments LLC</h3>
                   <p className="text-sm">Orlando, FL — June 2022 - Present</p>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 className="font-semibold">Partner and Technical Advisor - ACG Go LLC</h3>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Founder and Manager - LNFN Investments LLC</h3>
+                  <p className="text-sm">Orlando, FL — July 2022 - Present</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Partner and Technical Advisor - <a href="https://www.acg-go.com/" target="_blank" rel="noopener noreferrer">ACG Go LLC</a></h3>
                   <p className="text-sm">Tempe, Arizona — Mar. 2024 - Present</p>
                 </div>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Skills</h2>
+              <ul className="space-y-2 list-disc list-inside animate-fade-in">
+                <li>Python, C/C++, JavaScript/TypeScript</li>
+                <li>React &amp; Tailwind CSS</li>
+                <li>Machine Learning and Security Research</li>
+              </ul>
             </section>
 
             <section>
