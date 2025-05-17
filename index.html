@@ -8,9 +8,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    .fade-section{opacity:0;transform:translateY(2rem);transition:opacity .6s ease-out,transform .6s ease-out;}
-    .fade-section.in-view{opacity:1;transform:translateY(0);}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
   </style>
 </head>
 <body class="font-sans text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900 transition-colors">
@@ -25,13 +43,6 @@
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
-      React.useEffect(() => {
-        const obs = new IntersectionObserver(entries => {
-          entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("in-view"); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll(".fade-section").forEach(el => obs.observe(el));
-        return () => obs.disconnect();
-      }, []);
         }
       }, [dark]);
 
@@ -44,8 +55,8 @@
           >
             {dark ? '☀' : '🌙'}
           </button>
-          <header className="min-h-screen flex flex-col items-center justify-center text-center space-y-4 px-4">
-            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-fuchsia-500">
+          <header className="min-h-screen flex flex-col items-center justify-center text-center space-y-4 px-4 animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-sky-500 to-fuchsia-600">
               Jie Lin
             </h1>
             <p className="text-xl">Ph.D. Candidate in Computer Science</p>
@@ -63,7 +74,7 @@
           </header>
 
           <main className="space-y-12 px-4 pb-16 max-w-4xl mx-auto">
-            <section class="fade-section">
+            <section>
               <h2 className="text-3xl font-semibold mb-4">Education</h2>
               <div className="space-y-4">
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
@@ -85,63 +96,68 @@
                 </div>
               </div>
             </section>
-            <section class="fade-section">
+
+            <section>
               <h2 className="text-3xl font-semibold mb-4">Research Publications</h2>
               <div className="space-y-4">
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection</h3>
                   <p className="text-sm">NDSS 2025, San Diego, CA – Feb 24–28, 2025</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
-                  <a class="text-blue-500 hover:underline" href="https://doi.org/10.14722/ndss.2025.241491" target="_blank" rel="noopener noreferrer">Read paper</a>
+                  <a className="text-sm underline" href="https://doi.org/10.14722/ndss.2025.241491" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows</h3>
-                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18-22, 2024</p>
+                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18–22, 2024</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
-                  <a class="text-blue-500 hover:underline" href="https://arxiv.org/abs/2502.00064" target="_blank" rel="noopener noreferrer">Read paper</a>
+                  <a className="text-sm underline" href="https://arxiv.org/abs/2502.00064" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
-                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
                   <h3 className="font-semibold">Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web</h3>
                   <p className="text-sm">CCSW, ACM CCS 2023 – Copenhagen, Denmark</p>
                   <p className="text-sm">Mohamed Alqadhi, Mohammed Alkinoon, Jie Lin, Ahmed Abdalaal, David Mohaisen</p>
-                  <a class="text-blue-500 hover:underline" href="https://doi.org/10.1145/3605763.3625274" target="_blank" rel="noopener noreferrer">Read paper</a>
+                  <a className="text-sm underline" href="https://doi.org/10.1145/3605763.3625274" target="_blank" rel="noopener noreferrer">Read paper</a>
                 </div>
               </div>
             </section>
-            <section class="fade-section">
-            <section class="fade-section">
-              <h2 class="text-3xl font-semibold mb-4">Professional Experience</h2>
-              <div class="space-y-4">
-                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 class="font-semibold">Graduate Teaching Assistant - <a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
-                  <p class="text-sm">Orlando, FL — Fall 2021 - Present</p>
+
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Graduate Teaching Assistant - <a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
+                  <p className="text-sm">Orlando, FL — Fall 2021 - Present</p>
                 </div>
-                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 class="font-semibold">Founder and Manager - TLin Investments LLC</h3>
-                  <p class="text-sm">Orlando, FL — June 2022 - Present</p>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Founder and Manager - TLin Investments LLC</h3>
+                  <p className="text-sm">Orlando, FL — June 2022 - Present</p>
                 </div>
-                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 class="font-semibold">Founder and Manager - LNFN Investments LLC</h3>
-                  <p class="text-sm">Orlando, FL — Jul. 2022 - Present</p>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Founder and Manager - LNFN Investments LLC</h3>
+                  <p className="text-sm">Orlando, FL — July 2022 - Present</p>
                 </div>
-                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
-                  <h3 class="font-semibold">Partner and Technical Advisor - <a href="https://www.acg-go.com/" target="_blank" rel="noopener noreferrer">ACG Go LLC</a></h3>
-                  <p class="text-sm">Tempe, Arizona — Mar. 2024 - Present</p>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600 animate-fade-in">
+                  <h3 className="font-semibold">Partner and Technical Advisor - <a href="https://www.acg-go.com/" target="_blank" rel="noopener noreferrer">ACG Go LLC</a></h3>
+                  <p className="text-sm">Tempe, Arizona — Mar. 2024 - Present</p>
                 </div>
+              </div>
             </section>
-            <section class="fade-section">
-              <h2 class="text-3xl font-semibold mb-4">Technical Skills</h2>
-              <ul class="list-disc list-inside space-y-1 text-sm">
+
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Skills</h2>
+              <ul className="space-y-2 list-disc list-inside animate-fade-in">
                 <li><strong>Languages</strong>: C++, Java, Python, SQL, HTML, CSS, JavaScript, Assembly</li>
                 <li><strong>Technologies</strong>: Linux, J2EE, Machine Learning, Deep Learning, Large Language Models</li>
                 <li><strong>Tools</strong>: Microsoft Office, High-Performance Computers, Regular Expression</li>
               </ul>
-            <section class="fade-section">
-              <h2 class="text-3xl font-semibold mb-4">Languages</h2>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Languages</h2>
               <p>English (Fluent), Japanese (Fluent), Mandarin (Fluent)</p>
             </section>
 
-            <section class="fade-section">
+            <section>
               <h2 className="text-3xl font-semibold mb-4">Honors &amp; Awards</h2>
               <ul className="space-y-2 list-disc list-inside">
                 <li>Phi Beta Kappa – 2018</li>
