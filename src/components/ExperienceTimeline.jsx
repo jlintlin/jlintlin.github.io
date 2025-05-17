@@ -3,7 +3,7 @@ const experiences = [
         org: "University of Central Florida",
         orgUrl: "https://www.ucf.edu",
         role: "Ph.D. in Computer Science",
-        date: "Aug. 2020 - Present",
+        date: "August 2020 - Present",
         location: "Orlando, FL",
         advisor: "Dr. David Mohaisen",
     },
@@ -11,14 +11,14 @@ const experiences = [
         org: "Emory University",
         orgUrl: "https://www.emory.edu",
         role: "Master of Science in Computer Science",
-        date: "Sept. 2018 - May 2020",
+        date: "September 2018 - May 2020",
         location: "Atlanta, GA",
     },
     {
         org: "Ursinus College",
         orgUrl: "https://www.ursinus.edu",
         role: "Bachelor of Science in Computer Science and Mathematics",
-        date: "Aug. 2014 - May 2018",
+        date: "August 2014 - May 2018",
         location: "Collegeville, PA",
         minor: "Japanese",
     },
@@ -26,81 +26,36 @@ const experiences = [
 
 export default function ExperienceTimeline() {
     return (
-        <div className="space-y-12">
-            <div className="relative">
-                <div className="glass p-6 rounded-lg shadow-glass dark:shadow-glass-dark animate-fade-in">
-                    <div className="flex justify-between flex-wrap mb-3">
-                        <h3 className="font-medium">
-                            Ph.D. in Computer Science
-                        </h3>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Aug. 2020 - Present</span>
+        <div className="space-y-4">
+            {experiences.map((exp, index) => (
+                <div key={index} className="p-5 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-white">{exp.role}</h3>
+                        <span className="text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.date}</span>
                     </div>
-                    <div className="flex items-center mb-3">
+                    <div className="mb-2">
                         <a
-                            href="https://www.ucf.edu"
+                            href={exp.orgUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-primary-light dark:text-primary-dark hover:underline decoration-2 underline-offset-2"
+                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
                         >
-                            University of Central Florida
+                            {exp.org}
                         </a>
-                        <span className="mx-2 text-gray-400">—</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Orlando, FL</span>
+                        <span className="text-gray-600 dark:text-gray-400 ml-2">• {exp.location}</span>
                     </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                        Advisor: Dr. David Mohaisen
-                    </p>
+                    {exp.advisor && (
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                            Advisor: {exp.advisor}
+                        </p>
+                    )}
+                    {exp.minor && (
+                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                            Minor: {exp.minor}
+                        </p>
+                    )}
                 </div>
-            </div>
-
-            <div className="relative">
-                <div className="glass p-6 rounded-lg shadow-glass dark:shadow-glass-dark animate-fade-in">
-                    <div className="flex justify-between flex-wrap mb-3">
-                        <h3 className="font-medium">
-                            Master of Science in Computer Science
-                        </h3>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Sept. 2018 - May 2020</span>
-                    </div>
-                    <div className="flex items-center">
-                        <a
-                            href="https://www.emory.edu"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary-light dark:text-primary-dark hover:underline decoration-2 underline-offset-2"
-                        >
-                            Emory University
-                        </a>
-                        <span className="mx-2 text-gray-400">—</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Atlanta, GA</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative">
-                <div className="glass p-6 rounded-lg shadow-glass dark:shadow-glass-dark animate-fade-in">
-                    <div className="flex justify-between flex-wrap mb-3">
-                        <h3 className="font-medium">
-                            Bachelor of Science in Computer Science and Mathematics
-                        </h3>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Aug. 2014 - May 2018</span>
-                    </div>
-                    <div className="flex items-center mb-3">
-                        <a
-                            href="https://www.ursinus.edu"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary-light dark:text-primary-dark hover:underline decoration-2 underline-offset-2"
-                        >
-                            Ursinus College
-                        </a>
-                        <span className="mx-2 text-gray-400">—</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">Collegeville, PA</span>
-                    </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                        Minor: Japanese
-                    </p>
-                </div>
-            </div>
+            ))}
         </div>
     );
 } 

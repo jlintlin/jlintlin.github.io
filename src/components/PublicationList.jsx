@@ -1,3 +1,5 @@
+import React from "react";
+
 const pubs = [
     {
         title: "From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection",
@@ -22,36 +24,34 @@ const pubs = [
     },
 ];
 
-export default function PublicationList() {
+export default function PublicationList({ publications }) {
     return (
-        <div className="space-y-8">
-            {pubs.map((pub, i) => (
-                <div
-                    key={i}
-                    className="glass p-6 rounded-lg border-l-2 border-primary-light/40 dark:border-primary-dark/40 shadow-glass dark:shadow-glass-dark transition-all duration-400 hover:translate-x-1 group"
-                >
-                    <div className="flex justify-between items-start mb-3">
-                        <h3 className="font-medium text-foreground-light dark:text-foreground-dark group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors duration-300">
-                            {pub.title}
-                        </h3>
-                        <span className="ml-3 shrink-0 text-xs rounded-full px-3 py-1 bg-primary-light/10 dark:bg-primary-dark/10 text-primary-light dark:text-primary-dark">
-                            {pub.type}
+        <div className="space-y-4">
+            {publications.map((pub, index) => (
+                <div key={index} className="p-5 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    <h3 className="font-medium text-lg mb-2 text-gray-900 dark:text-white">{pub.title}</h3>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full text-sm">
+                            {pub.date}
                         </span>
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">{pub.venue}</span>
                     </div>
-                    <div className="text-sm text-gray-700 dark:text-gray-300 mb-2">{pub.venue}</div>
-                    <div className="text-sm mb-4">{pub.authors}</div>
+                    <div className="text-sm mb-3 text-gray-700 dark:text-gray-300">{pub.authors}</div>
                     <div className="flex items-center">
                         <a
                             href={pub.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-primary-light dark:text-primary-dark hover:underline decoration-2 underline-offset-2 text-sm"
+                            className="text-blue-600 dark:text-blue-400 hover:underline text-sm flex items-center"
                         >
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                             Read paper
                         </a>
+                        <span className="ml-3 text-xs bg-gray-100 dark:bg-gray-700 rounded-full px-2 py-1 text-gray-700 dark:text-gray-300">
+                            {pub.type}
+                        </span>
                     </div>
                 </div>
             ))}

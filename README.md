@@ -1,16 +1,15 @@
 # Jie Lin - Academic Portfolio
 
-A modern, Japanese-inspired academic portfolio website built with React and Tailwind CSS.
+A modern, clean academic portfolio website built with React and Tailwind CSS.
 
 ## Features
 
-- Clean, minimalist Japanese-inspired design
+- Clean, minimalist design
 - Light/dark mode toggle
 - Mobile responsive
-- Animations and hover effects
-- Glassmorphism elements
-- Email address protection against spam bots
-- Easy to customize and extend
+- Uniform date formatting
+- Clean card-based layout
+- GitHub Pages compatibility
 
 ## Development
 
@@ -30,14 +29,32 @@ npm run preview
 
 ## Deployment to GitHub Pages
 
+### Automatic Deployment
+
+```bash
+# Install gh-pages package if not already installed
+npm install --save-dev gh-pages
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+This will automatically build the project and deploy it to the `gh-pages` branch of your repository.
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
 1. Build the site:
    ```bash
    npm run build
    ```
 
-2. Create a branch named `gh-pages`:
+2. Create or switch to the `gh-pages` branch:
    ```bash
-   git checkout -b gh-pages
+   git checkout gh-pages # if the branch exists
+   # or
+   git checkout -b gh-pages # to create new branch
    ```
 
 3. Move build files to root:
@@ -58,7 +75,7 @@ npm run preview
 
 Edit files in `src/components/` to modify the content and appearance.
 
-To update your information, modify the data in each component file.
+To update your information, modify the data in the App.jsx file and component files.
 
 ## License
 
