@@ -1,287 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jie Lin - Computer Science Ph.D. Candidate specializing in LLMs and Security">
-    <meta name="theme-color" content="#0f172a">
-    <title>Jie Lin - Computer Science Ph.D. Candidate</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jie Lin - Computer Science Ph.D. Candidate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-section{opacity:0;transform:translateY(2rem);transition:opacity .6s ease-out,transform .6s ease-out;}
+    .fade-section.in-view{opacity:1;transform:translateY(0);}
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+<body class="font-sans text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900 transition-colors">
+  <div id="root"></div>
+  <script type="text/babel">
+    function App() {
+      const [dark, setDark] = React.useState(false);
+      const [showContact, setShowContact] = React.useState(false);
 
-<body>
-    <button class="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-    </button>
+      React.useEffect(() => {
+        if (dark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+      React.useEffect(() => {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("in-view"); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".fade-section").forEach(el => obs.observe(el));
+        return () => obs.disconnect();
+      }, []);
 
-    <nav class="navbar">
-        <div class="nav-content">
-            <span class="nav-name">Jie Lin</span>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#research">Research</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
+        }
+      }, [dark]);
+
+      return (
+        <div>
+          <button
+            onClick={() => setDark(!dark)}
+            className="fixed bottom-4 right-4 p-3 rounded-full backdrop-blur bg-white/50 dark:bg-gray-800/50 border border-white/60 dark:border-gray-600 shadow"
+            aria-label="Toggle theme"
+          >
+            {dark ? '☀' : '🌙'}
+          </button>
+          <header className="min-h-screen flex flex-col items-center justify-center text-center space-y-4 px-4">
+            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-fuchsia-500">
+              Jie Lin
+            </h1>
+            <p className="text-xl">Ph.D. Candidate in Computer Science</p>
+            <p className="opacity-80">Specializing in Large Language Models &amp; Security Research</p>
+            <div className="mt-6 backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-6 rounded-lg border border-white/40 dark:border-gray-600">
+              {showContact ? (
+                <div className="space-y-2">
+                  <a className="block hover:underline" href="mailto:Jie.LinREMOVE_THIS@ucf.edu">Jie.LinREMOVE_THIS@ucf.edu</a>
+                  <a className="block hover:underline" href="https://linkedin.com/in/jie-lin-681421129/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+              ) : (
+                <button className="underline" onClick={() => setShowContact(true)}>Reveal contact info</button>
+              )}
             </div>
+          </header>
+
+          <main className="space-y-12 px-4 pb-16 max-w-4xl mx-auto">
+            <section class="fade-section">
+              <h2 className="text-3xl font-semibold mb-4">Education</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold"><a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
+                  <p className="text-sm">Aug. 2020 - Present — Ph.D. in Computer Science</p>
+                  <p className="text-sm">Orlando, FL</p>
+                  <p className="text-sm">Advisor: Dr. David Mohaisen</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold"><a href="https://www.emory.edu" target="_blank" rel="noopener noreferrer">Emory University</a></h3>
+                  <p className="text-sm">Sept. 2018 - May 2020 — Master of Science in Computer Science</p>
+                  <p className="text-sm">Atlanta, GA</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold"><a href="https://www.ursinus.edu" target="_blank" rel="noopener noreferrer">Ursinus College</a></h3>
+                  <p className="text-sm">Aug. 2014 - May 2018 — Bachelor of Science in Computer Science and Mathematics</p>
+                  <p className="text-sm">Collegeville, PA</p>
+                  <p className="text-sm">Minor: Japanese</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-section">
+              <h2 className="text-3xl font-semibold mb-4">Research Publications</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection</h3>
+                  <p className="text-sm">NDSS 2025, San Diego, CA – Feb 24–28, 2025</p>
+                  <p className="text-sm">Jie Lin and David Mohaisen</p>
+                  <a class="text-blue-500 hover:underline" href="https://doi.org/10.14722/ndss.2025.241491" target="_blank" rel="noopener noreferrer">Read paper</a>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows</h3>
+                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18-22, 2024</p>
+                  <p className="text-sm">Jie Lin and David Mohaisen</p>
+                  <a class="text-blue-500 hover:underline" href="https://arxiv.org/abs/2502.00064" target="_blank" rel="noopener noreferrer">Read paper</a>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web</h3>
+                  <p className="text-sm">CCSW, ACM CCS 2023 – Copenhagen, Denmark</p>
+                  <p className="text-sm">Mohamed Alqadhi, Mohammed Alkinoon, Jie Lin, Ahmed Abdalaal, David Mohaisen</p>
+                  <a class="text-blue-500 hover:underline" href="https://doi.org/10.1145/3605763.3625274" target="_blank" rel="noopener noreferrer">Read paper</a>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-section">
+            <section class="fade-section">
+              <h2 class="text-3xl font-semibold mb-4">Professional Experience</h2>
+              <div class="space-y-4">
+                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 class="font-semibold">Graduate Teaching Assistant - <a href="https://www.ucf.edu" target="_blank" rel="noopener noreferrer">University of Central Florida</a></h3>
+                  <p class="text-sm">Orlando, FL — Fall 2021 - Present</p>
+                </div>
+                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 class="font-semibold">Founder and Manager - TLin Investments LLC</h3>
+                  <p class="text-sm">Orlando, FL — June 2022 - Present</p>
+                </div>
+                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 class="font-semibold">Founder and Manager - LNFN Investments LLC</h3>
+                  <p class="text-sm">Orlando, FL — Jul. 2022 - Present</p>
+                </div>
+                <div class="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 class="font-semibold">Partner and Technical Advisor - <a href="https://www.acg-go.com/" target="_blank" rel="noopener noreferrer">ACG Go LLC</a></h3>
+                  <p class="text-sm">Tempe, Arizona — Mar. 2024 - Present</p>
+                </div>
+            </section>
+            <section class="fade-section">
+              <h2 class="text-3xl font-semibold mb-4">Technical Skills</h2>
+              <ul class="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Languages</strong>: C++, Java, Python, SQL, HTML, CSS, JavaScript, Assembly</li>
+                <li><strong>Technologies</strong>: Linux, J2EE, Machine Learning, Deep Learning, Large Language Models</li>
+                <li><strong>Tools</strong>: Microsoft Office, High-Performance Computers, Regular Expression</li>
+              </ul>
+            <section class="fade-section">
+              <h2 class="text-3xl font-semibold mb-4">Languages</h2>
+              <p>English (Fluent), Japanese (Fluent), Mandarin (Fluent)</p>
+            </section>
+
+            <section class="fade-section">
+              <h2 className="text-3xl font-semibold mb-4">Honors &amp; Awards</h2>
+              <ul className="space-y-2 list-disc list-inside">
+                <li>Phi Beta Kappa – 2018</li>
+                <li>Department of Modern Language Honor Society – 2018</li>
+                <li>Upsilon Pi Epsilon (UPE) Computer Science Honor Society – 2016</li>
+                <li>Kappa Mu Epsilon (KME) Mathematics Honor Society – 2016</li>
+              </ul>
+            </section>
+          </main>
+
+          <footer className="text-center py-8">
+            &copy; 2025 Jie Lin. All rights reserved.
+          </footer>
         </div>
-    </nav>
+      );
+    }
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Jie Lin</h1>
-            <p class="subtitle">Ph.D. Candidate in Computer Science</p>
-            <p class="focus">Specializing in Large Language Models & Security Research</p>
-            <div class="contact-info">
-                <a href="tel:484-548-8618" class="contact-link"><i class="fas fa-phone"></i> Contact by Phone</a>
-                <a href="mailto:Jie.Lin@ucf.edu" class="contact-link"><i class="fas fa-envelope"></i> Contact by
-                    Email</a>
-                <a href="https://linkedin.com/in/jie-lin-681421129/" target="_blank"><i class="fab fa-linkedin"></i>
-                    LinkedIn</a>
-            </div>
-            <p class="contact-teaser">Hover above to reveal contact information</p>
-        </div>
-    </header>
-
-    <main>
-        <section id="education" class="section">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>University of Central Florida</h3>
-                <p class="date">Aug. 2020 - Present</p>
-                <p class="degree">Ph.D. in Computer Science</p>
-                <p class="location">Orlando, FL</p>
-                <p class="detail">Advisor: Dr. David Mohaisen</p>
-            </div>
-
-            <div class="education-item">
-                <h3>Emory University</h3>
-                <p class="date">Sept. 2018 - May 2020</p>
-                <p class="degree">Master of Science in Computer Science</p>
-                <p class="location">Atlanta, GA</p>
-            </div>
-
-            <div class="education-item">
-                <h3>Ursinus College</h3>
-                <p class="date">Aug. 2014 - May 2018</p>
-                <p class="degree">Bachelor of Science in Computer Science and Mathematics</p>
-                <p class="location">Collegeville, PA</p>
-                <p class="detail">Minor: Japanese</p>
-            </div>
-        </section>
-
-        <section id="research" class="section">
-            <h2>Research Publications</h2>
-            <div class="publication-item">
-                <h3>From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection
-                </h3>
-                <p class="conference">Network and Distributed System Security Symposium (NDSS) 2025</p>
-                <p class="location">San Diego, California</p>
-                <p class="date">Feb 24–28, 2025</p>
-                <p class="authors">Jie Lin and David Mohaisen</p>
-            </div>
-
-            <div class="publication-item">
-                <h3>Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows</h3>
-                <p class="conference">International Conference on Machine Learning and Applications (ICMLA) 2024</p>
-                <p class="location">Miami, Florida</p>
-                <p class="date">Dec 18-22, 2024</p>
-                <p class="authors">Jie Lin and David Mohaisen</p>
-                <ul class="research-points">
-                    <li>Investigated relationship between tokenized length of input Java source code and LLM accuracy
-                    </li>
-                    <li>Analyzed impact using chi-square tests and known ground truth</li>
-                </ul>
-            </div>
-
-            <div class="publication-item">
-                <h3>Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web</h3>
-                <p class="conference">Cloud Computing Security Workshop (CCSW), ACM CCS 2023</p>
-                <p class="location">Copenhagen, Denmark</p>
-                <p class="date">November 26, 2023</p>
-                <p class="authors">Mohamed Alqadhi, Mohammed Alkinoon, Jie Lin, Ahmed Abdalaal, David Mohaisen</p>
-            </div>
-        </section>
-
-        <section id="experience" class="section">
-            <h2>Professional Experience</h2>
-            <div class="experience-item">
-                <h3>Graduate Teaching Assistant</h3>
-                <p class="company">University of Central Florida</p>
-                <p class="location">Orlando, FL</p>
-                <p class="date">Fall 2021 - Present</p>
-                <ul class="experience-points">
-                    <li>Teach recitations and develop comprehensive teaching materials</li>
-                    <li>Received excellent evaluations from Dr. Euripides Montagne</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Founder and Manager</h3>
-                <p class="company">TLin Investments LLC</p>
-                <p class="location">Orlando, FL</p>
-                <p class="date">June 2022 - Present</p>
-                <ul class="experience-points">
-                    <li>Lead real estate investment decisions and market research</li>
-                    <li>Develop innovative solutions integrating 3D property visits with LLM technology</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Partner and Technical Advisor</h3>
-                <p class="company">ACG Go LLC</p>
-                <p class="location">Tempe, Arizona</p>
-                <p class="date">Mar. 2024 - Present</p>
-                <ul class="experience-points">
-                    <li>Manage assets and evaluate business performance for events, cafe operations, and retail</li>
-                    <li>Provide technical advice to optimize workflow and reduce operational costs</li>
-                    <li>Serve as HR manager handling hiring and legal contract modifications</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="skills" class="section">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i>Core Development</h3>
-                    <ul>
-                        <li><i class="fab fa-python"></i>Python<div class="skill-level" data-level="expert"></div>
-                        </li>
-                        <li><i class="fab fa-java"></i>Java<div class="skill-level" data-level="expert"></div>
-                        </li>
-                        <li><i class="fas fa-plus-square"></i>C++<div class="skill-level" data-level="advanced"></div>
-                        </li>
-                        <li><i class="fas fa-database"></i>SQL<div class="skill-level" data-level="advanced"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i>AI & Machine Learning</h3>
-                    <ul>
-                        <li><i class="fas fa-robot"></i>Large Language Models<div class="skill-level"
-                                data-level="expert"></div>
-                        </li>
-                        <li><i class="fas fa-network-wired"></i>Deep Learning<div class="skill-level"
-                                data-level="expert"></div>
-                        </li>
-                        <li><i class="fas fa-chart-line"></i>Machine Learning<div class="skill-level"
-                                data-level="expert"></div>
-                        </li>
-                        <li><i class="fas fa-microchip"></i>Neural Networks<div class="skill-level"
-                                data-level="advanced"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i>Security & Systems</h3>
-                    <ul>
-                        <li><i class="fas fa-bug"></i>Vulnerability Detection<div class="skill-level"
-                                data-level="expert"></div>
-                        </li>
-                        <li><i class="fab fa-linux"></i>Linux Systems<div class="skill-level" data-level="advanced">
-                            </div>
-                        </li>
-                        <li><i class="fas fa-server"></i>High-Performance Computing<div class="skill-level"
-                                data-level="advanced"></div>
-                        </li>
-                        <li><i class="fas fa-code-branch"></i>Version Control<div class="skill-level"
-                                data-level="expert"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i>Web Technologies</h3>
-                    <ul>
-                        <li><i class="fab fa-html5"></i>HTML/CSS<div class="skill-level" data-level="advanced"></div>
-                        </li>
-                        <li><i class="fab fa-js"></i>JavaScript<div class="skill-level" data-level="advanced"></div>
-                        </li>
-                        <li><i class="fab fa-react"></i>React<div class="skill-level" data-level="intermediate"></div>
-                        </li>
-                        <li><i class="fas fa-server"></i>Node.js<div class="skill-level" data-level="intermediate">
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="languages" class="section">
-            <h2>Languages</h2>
-            <div class="language-list">
-                <span class="language">English (Fluent)</span>
-                <span class="language">Japanese (Fluent)</span>
-                <span class="language">Mandarin (Fluent)</span>
-            </div>
-        </section>
-
-        <section id="honors" class="section">
-            <h2>Honors & Awards</h2>
-            <div class="honors-grid">
-                <div class="honor-item">
-                    <span class="honor">Phi Beta Kappa</span>
-                    <span class="year">2018</span>
-                </div>
-                <div class="honor-item">
-                    <span class="honor">Department of Modern Language Honor Society</span>
-                    <span class="year">2018</span>
-                </div>
-                <div class="honor-item">
-                    <span class="honor">Upsilon Pi Epsilon (UPE) Computer Science Honor Society</span>
-                    <span class="year">2016</span>
-                </div>
-                <div class="honor-item">
-                    <span class="honor">Kappa Mu Epsilon (KME) Mathematics Honor Society</span>
-                    <span class="year">2016</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Jie Lin. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-
-            // Update icon
-            if (document.body.classList.contains('dark-theme')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        });
-
-        // Contact Info Display
-        const contactLinks = document.querySelectorAll('.contact-link');
-        contactLinks.forEach(link => {
-            const originalText = link.getAttribute('href').includes('tel:') ?
-                '484-548-8618' : 'Jie.Lin@ucf.edu';
-            const displayText = link.textContent;
-
-            link.addEventListener('mouseenter', () => {
-                link.innerHTML = `<i class="${link.querySelector('i').className}"></i> ${originalText}`;
-            });
-
-            link.addEventListener('mouseleave', () => {
-                link.innerHTML = `<i class="${link.querySelector('i').className}"></i> ${displayText}`;
-            });
-        });
-    </script>
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
 </body>
-
 </html>
