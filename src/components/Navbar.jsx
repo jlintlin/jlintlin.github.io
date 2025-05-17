@@ -8,45 +8,50 @@ export default function Navbar({ dark, setDark }) {
     };
 
     return (
-        <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-            <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <nav className="sticky top-0 z-50 bg-shoji dark:bg-gray-900 border-b border-gray-200/30 dark:border-gray-800/30 backdrop-blur-sm">
+            <div className="container-jp">
                 <div className="flex justify-between items-center h-16">
-                    <a href="#" className="text-xl font-medium text-gray-900 dark:text-white">
-                        Jie Lin
+                    <a href="#" className="text-xl font-medium tracking-tight text-gray-900 dark:text-white relative group">
+                        <span className="font-jp">Jie Lin</span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                     </a>
 
                     {/* Desktop menu */}
                     <div className="hidden md:flex md:items-center">
-                        <div className="flex space-x-4 mr-6">
+                        <div className="flex space-x-6 mr-6">
                             <a
                                 href="#education"
-                                className="text-gray-500 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-2 py-1 text-sm font-medium"
+                                className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 px-2 py-1 text-sm font-medium relative group"
                             >
                                 Education
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                             </a>
                             <a
                                 href="#experience"
-                                className="text-gray-500 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-2 py-1 text-sm font-medium"
+                                className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 px-2 py-1 text-sm font-medium relative group"
                             >
                                 Experience
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                             </a>
                             <a
                                 href="#publications"
-                                className="text-gray-500 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-2 py-1 text-sm font-medium"
+                                className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 px-2 py-1 text-sm font-medium relative group"
                             >
                                 Publications
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                             </a>
                             <a
                                 href="#contact"
-                                className="text-gray-500 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 px-2 py-1 text-sm font-medium"
+                                className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 px-2 py-1 text-sm font-medium relative group"
                             >
                                 Contact
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                             </a>
                         </div>
 
                         <button
                             onClick={() => setDark(!dark)}
-                            className="rounded-md p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-300 focus:outline-none"
+                            className="rounded-full p-2 text-gray-700 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 dark:text-gray-300 focus:outline-none transition-all"
                             aria-label="Toggle dark mode"
                         >
                             {dark ? (
@@ -65,7 +70,7 @@ export default function Navbar({ dark, setDark }) {
                     <div className="flex md:hidden">
                         <button
                             onClick={() => setDark(!dark)}
-                            className="mr-2 p-2 rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-300 focus:outline-none"
+                            className="mr-2 p-2 rounded-full text-gray-700 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 dark:text-gray-300 focus:outline-none"
                             aria-label="Toggle dark mode"
                         >
                             {dark ? (
@@ -81,7 +86,7 @@ export default function Navbar({ dark, setDark }) {
 
                         <button
                             onClick={toggleMenu}
-                            className="p-2 rounded-md text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-300 focus:outline-none"
+                            className="p-2 rounded-full text-gray-700 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 dark:text-gray-300 focus:outline-none"
                             aria-expanded={isMenuOpen}
                             aria-label="Toggle menu"
                         >
@@ -99,29 +104,33 @@ export default function Navbar({ dark, setDark }) {
 
             {/* Mobile menu, show/hide based on menu state */}
             {isMenuOpen && (
-                <div className="md:hidden bg-white dark:bg-gray-900 pb-3 border-b border-gray-200 dark:border-gray-800">
+                <div className="md:hidden bg-shoji dark:bg-gray-900 pb-3 border-t border-gray-200/30 dark:border-gray-800/30">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <a
                             href="#education"
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50/50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800/50"
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             Education
                         </a>
                         <a
                             href="#experience"
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50/50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800/50"
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             Experience
                         </a>
                         <a
                             href="#publications"
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50/50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800/50"
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             Publications
                         </a>
                         <a
                             href="#contact"
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50/50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800/50"
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             Contact
                         </a>

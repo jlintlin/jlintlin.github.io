@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,12 @@
 
 :root {
   --animation-duration: 0.5s;
+  --shoji-color: #ffffff;
+  --washi-color: #f9f9f9;
+  --sumi-color: #1a1a1a;
+  --indigo-color: #4f46e5;
+  --sakura-color: #e11d48;
+  --matcha-color: #16a34a;
 }
 
 /* Global Styles */
@@ -16,11 +22,18 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--shoji-color);
+  color: var(--sumi-color);
+}
+
+body.dark {
+  background-color: #111827;
+  color: #f3f4f6;
 }
 
 /* Smooth transitions for theme switching */
@@ -60,9 +73,6 @@ body {
   }
 }
 
-/* Remove conflicting styles below */
-/* Remove conflicting styles below */
-
 @layer base {
 
   h1,
@@ -73,19 +83,55 @@ body {
   h6 {
     letter-spacing: -0.025em;
   }
+
+  h1 {
+    @apply text-4xl font-light;
+  }
+
+  h2 {
+    @apply text-2xl font-normal;
+  }
+
+  h3 {
+    @apply text-xl font-medium;
+  }
 }
 
 @layer components {
+
+  /* Container with responsive padding */
+  .container-jp {
+    @apply mx-auto w-full px-4 max-w-screen-xl;
+  }
+
+  /* Japanese-inspired card */
+  .washi-card {
+    @apply bg-white dark:bg-gray-800 rounded-md shadow-md border border-gray-100 dark:border-gray-700 p-5 transition-all duration-300;
+  }
+
+  /* Japanese-inspired section card */
   .section-card {
-    @apply transition-all duration-300 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg border border-gray-100 dark:border-gray-700;
+    @apply washi-card hover:shadow-lg;
   }
 
-  .tag {
-    @apply text-xs rounded-full px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium;
-  }
-
+  /* Date tag with uniform style */
   .date-tag {
-    @apply text-sm font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full;
+    @apply text-sm font-medium bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-200 px-3 py-1 rounded-full;
+  }
+
+  /* Decorative horizontal line inspired by Japanese scrolls */
+  .jp-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-600 to-transparent my-6;
+  }
+
+  /* Section title with Japanese-inspired styling */
+  .jp-section-title {
+    @apply text-2xl font-normal mb-6 pb-2 border-b border-gray-200 dark:border-gray-600 flex items-center;
+  }
+
+  /* Responsive grid with auto-fit */
+  .jp-auto-grid {
+    @apply grid grid-cols-1 gap-6;
   }
 }
 
@@ -122,19 +168,67 @@ section:nth-child(5) {
   animation-delay: calc(var(--animation-duration) * 0.4);
 }
 
-.bg-gradient-to-b {
-  background-size: 100% 200%;
-  background-position: 0 0;
-  transition: background-position 1s ease;
+/* Japanese patterns for background styling */
+.bg-shoji {
+  background-color: var(--shoji-color);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.01'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.bg-gradient-to-b:hover {
-  background-position: 0 100%;
+.dark .bg-shoji {
+  background-color: #111827;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Enhancing card hover effects */
-.hover\:shadow-lg:hover {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Japanese asanoha pattern */
+.bg-asanoha {
+  background-color: var(--washi-color);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M0 20L20 0L10 0L0 10M40 20L20 40L30 40L40 30M0 40L20 20L20 40M40 0L20 20L20 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark .bg-asanoha {
+  background-color: #1e293b;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 20L20 0L10 0L0 10M40 20L20 40L30 40L40 30M0 40L20 20L20 40M40 0L20 20L20 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Responsive typography - added directly instead of in @apply */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsive container padding */
+@media (min-width: 640px) {
+  .container-jp {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-jp {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Responsive grid for jp-auto-grid */
+@media (min-width: 640px) {
+  .jp-auto-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .jp-auto-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

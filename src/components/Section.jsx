@@ -5,7 +5,7 @@ const iconMap = {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M12 14l9-5-9-5-9 5 9 5z" />
             <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998a12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
         </svg>
     ),
     "briefcase": (
@@ -42,14 +42,18 @@ const iconMap = {
 
 export default function Section({ id, title, icon, children }) {
     return (
-        <section id={id} className="bg-white dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm p-5">
-            <h2 className="text-xl font-medium mb-5 pb-2 border-b border-gray-200 dark:border-gray-700 flex items-center text-gray-900 dark:text-white">
-                <span className="text-blue-600 dark:text-blue-400">
+        <section id={id} className="bg-washi dark:bg-gray-800 rounded-md border border-gray-100/30 dark:border-gray-700/30 shadow-washi p-6">
+            <h2 className="jp-section-title text-gray-900 dark:text-white">
+                <span className="text-indigo-600 dark:text-indigo-400">
                     {iconMap[icon] || null}
                 </span>
                 {title}
             </h2>
-            {children}
+            <div className="relative">
+                {/* Japanese-inspired decorative element */}
+                <div className="absolute -left-0.5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-400/20 to-transparent"></div>
+                {children}
+            </div>
         </section>
     );
 } 
