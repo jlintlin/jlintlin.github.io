@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+<<<<<<< HEAD
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out both;
+    }
+  </style>
+=======
+>>>>>>> main
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -57,9 +69,27 @@
             <div className="mt-6 backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 p-6 rounded-lg border border-white/40 dark:border-gray-600">
               {showContact ? (
                 <div className="space-y-2">
+<<<<<<< HEAD
+                  <a
+                    className="block hover:underline"
+                    href="mailto:Jie.LinREMOVE_THIS@ucf.edu"
+                    title="Remove REMOVE_THIS to email"
+                  >
+                    Jie.LinREMOVE_THIS@ucf.edu
+                  </a>
+                  <a
+                    className="block hover:underline"
+                    href="https://linkedin.com/in/jie-lin-681421129/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+=======
                   <a className="block hover:underline" href="tel:484-548-8618">484-548-8618</a>
                   <a className="block hover:underline" href="mailto:Jie.Lin@ucf.edu">Jie.Lin@ucf.edu</a>
                   <a className="block hover:underline" href="https://linkedin.com/in/jie-lin-681421129/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+>>>>>>> main
                 </div>
               ) : (
                 <button className="underline" onClick={() => setShowContact(true)}>Reveal contact info</button>
@@ -68,22 +98,50 @@
           </header>
 
           <main className="space-y-12 px-4 pb-16 max-w-4xl mx-auto">
+<<<<<<< HEAD
+            <section className="animate-fadeInUp">
+              <h2 className="text-3xl font-semibold mb-4">Education</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">
+                    <a href="https://www.ucf.edu/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      University of Central Florida
+                    </a>
+                  </h3>
+=======
             <section>
               <h2 className="text-3xl font-semibold mb-4">Education</h2>
               <div className="space-y-4">
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
                   <h3 className="font-semibold">University of Central Florida</h3>
+>>>>>>> main
                   <p className="text-sm">Aug. 2020 - Present — Ph.D. in Computer Science</p>
                   <p className="text-sm">Orlando, FL</p>
                   <p className="text-sm">Advisor: Dr. David Mohaisen</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+<<<<<<< HEAD
+                  <h3 className="font-semibold">
+                    <a href="https://www.emory.edu/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      Emory University
+                    </a>
+                  </h3>
+=======
                   <h3 className="font-semibold">Emory University</h3>
+>>>>>>> main
                   <p className="text-sm">Sept. 2018 - May 2020 — Master of Science in Computer Science</p>
                   <p className="text-sm">Atlanta, GA</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+<<<<<<< HEAD
+                  <h3 className="font-semibold">
+                    <a href="https://www.ursinus.edu/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      Ursinus College
+                    </a>
+                  </h3>
+=======
                   <h3 className="font-semibold">Ursinus College</h3>
+>>>>>>> main
                   <p className="text-sm">Aug. 2014 - May 2018 — Bachelor of Science in Computer Science and Mathematics</p>
                   <p className="text-sm">Collegeville, PA</p>
                   <p className="text-sm">Minor: Japanese</p>
@@ -91,27 +149,97 @@
               </div>
             </section>
 
+<<<<<<< HEAD
+            <section className="animate-fadeInUp">
+              <h2 className="text-3xl font-semibold mb-4">Research Publications</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">
+                    <a href="https://dx.doi.org/10.14722/ndss.2025.241491" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection
+                    </a>
+                  </h3>
+=======
             <section>
               <h2 className="text-3xl font-semibold mb-4">Research Publications</h2>
               <div className="space-y-4">
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
                   <h3 className="font-semibold">From Large to Mammoth: A Comparative Evaluation of Large Language Models in Vulnerability Detection</h3>
+>>>>>>> main
                   <p className="text-sm">NDSS 2025, San Diego, CA – Feb 24–28, 2025</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+<<<<<<< HEAD
+                  <h3 className="font-semibold">
+                    <a href="https://arxiv.org/abs/2502.00064" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows
+                    </a>
+                  </h3>
+                  <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18–22, 2024</p>
+                  <p className="text-sm">Jie Lin and David Mohaisen</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">
+                    <a href="https://doi.org/10.1145/3605763.3625274" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web
+                    </a>
+                  </h3>
+=======
                   <h3 className="font-semibold">Evaluating Large Language Models in Vulnerability Detection Under Variable Context Windows</h3>
                   <p className="text-sm">ICMLA 2024, Miami, FL – Dec 18-22, 2024</p>
                   <p className="text-sm">Jie Lin and David Mohaisen</p>
                 </div>
                 <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
                   <h3 className="font-semibold">Entangled Clouds: Measuring the Hosting Infrastructure of the Free Contents Web</h3>
+>>>>>>> main
                   <p className="text-sm">CCSW, ACM CCS 2023 – Copenhagen, Denmark</p>
                   <p className="text-sm">Mohamed Alqadhi, Mohammed Alkinoon, Jie Lin, Ahmed Abdalaal, David Mohaisen</p>
                 </div>
               </div>
             </section>
 
+<<<<<<< HEAD
+            <section className="animate-fadeInUp">
+              <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
+              <div className="space-y-4">
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">
+                    Graduate Teaching Assistant -
+                    <a href="https://www.ucf.edu/" target="_blank" rel="noopener noreferrer" className="hover:underline">University of Central Florida</a>
+                  </h3>
+                  <p className="text-sm">Orlando, FL — Fall 2021 - Present</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">Founder and Manager - TLin Investments LLC (FL LLC)</h3>
+                  <p className="text-sm">Orlando, FL — June 2022 - Present</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">
+                    Partner and Technical Advisor -
+                    <a href="https://www.acg-go.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">ACG Go LLC</a>
+                  </h3>
+                  <p className="text-sm">Tempe, Arizona — Mar. 2024 - Present</p>
+                </div>
+                <div className="p-4 backdrop-blur bg-white/30 dark:bg-gray-800/30 rounded-lg border border-white/40 dark:border-gray-600">
+                  <h3 className="font-semibold">Founder and Manager - LNFN Investments LLC (FL LLC)</h3>
+                  <p className="text-sm">Orlando, FL — 2024 - Present</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="animate-fadeInUp">
+              <h2 className="text-3xl font-semibold mb-4">Technical Skills</h2>
+              <ul className="space-y-2 list-disc list-inside">
+                <li>Python, Java, C++, SQL</li>
+                <li>Large Language Models, Deep Learning, Machine Learning</li>
+                <li>Linux Systems, High-Performance Computing, Git</li>
+                <li>HTML/CSS, JavaScript, React, Node.js</li>
+              </ul>
+            </section>
+
+            <section className="animate-fadeInUp">
+=======
             <section>
               <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
               <div className="space-y-4">
@@ -131,11 +259,16 @@
             </section>
 
             <section>
+>>>>>>> main
               <h2 className="text-3xl font-semibold mb-4">Languages</h2>
               <p>English (Fluent), Japanese (Fluent), Mandarin (Fluent)</p>
             </section>
 
+<<<<<<< HEAD
+            <section className="animate-fadeInUp">
+=======
             <section>
+>>>>>>> main
               <h2 className="text-3xl font-semibold mb-4">Honors &amp; Awards</h2>
               <ul className="space-y-2 list-disc list-inside">
                 <li>Phi Beta Kappa – 2018</li>
