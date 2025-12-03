@@ -1,234 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --animation-duration: 0.5s;
-  --shoji-color: #ffffff;
-  --washi-color: #f9f9f9;
-  --sumi-color: #1a1a1a;
-  --indigo-color: #4f46e5;
-  --sakura-color: #e11d48;
-  --matcha-color: #16a34a;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: rgba(15, 23, 42, 0.12);
+  --glass-accent: rgba(0, 122, 255, 0.12);
+  --theme-bg: #f5f5f7;
+  --theme-text: #0f172a;
+  --theme-text-secondary: #6b7280;
+  color-scheme: light;
 }
 
-/* Global Styles */
+[data-theme='dark'] {
+  --glass-bg: rgba(20, 24, 38, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  --glass-accent: rgba(59, 130, 246, 0.18);
+  --theme-bg: #020617;
+  --theme-text: #e5e7eb;
+  --theme-text-secondary: #94a3b8;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  letter-spacing: -0.01em;
+  min-height: 100vh;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--shoji-color);
-  color: var(--sumi-color);
 }
 
-body.dark {
-  background-color: #111827;
-  color: #f3f4f6;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow, transform;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+#root {
+  min-height: 100vh;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+.bg-theme {
+  background-color: var(--theme-bg);
+}
+
+.text-theme {
+  color: var(--theme-text);
+}
+
+.text-theme-secondary {
+  color: var(--theme-text-secondary);
+}
+
+.border-glass-border {
+  border-color: var(--glass-border);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 50px 0 var(--glass-shadow);
+}
+
+.glass-strong {
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px 0 var(--glass-shadow), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass,
+.glass-strong,
+.bg-theme,
+.text-theme,
+.text-theme-secondary {
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out both;
-}
-
-/* Motion preferences */
-@media (prefers-reduced-motion) {
 
   *,
-  ::before,
-  ::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-@layer base {
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    letter-spacing: -0.025em;
-  }
-
-  h1 {
-    @apply text-4xl font-light;
-  }
-
-  h2 {
-    @apply text-2xl font-normal;
-  }
-
-  h3 {
-    @apply text-xl font-medium;
-  }
-}
-
-@layer components {
-
-  /* Container with responsive padding */
-  .container-jp {
-    @apply mx-auto w-full px-4 max-w-screen-xl;
-  }
-
-  /* Japanese-inspired card */
-  .washi-card {
-    @apply bg-white dark:bg-gray-800 rounded-md shadow-md border border-gray-100 dark:border-gray-700 p-5 transition-all duration-300;
-  }
-
-  /* Japanese-inspired section card */
-  .section-card {
-    @apply washi-card hover:shadow-lg;
-  }
-
-  /* Date tag with uniform style */
-  .date-tag {
-    @apply text-sm font-medium bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-200 px-3 py-1 rounded-full;
-  }
-
-  /* Decorative horizontal line inspired by Japanese scrolls */
-  .jp-divider {
-    @apply w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-600 to-transparent my-6;
-  }
-
-  /* Section title with Japanese-inspired styling */
-  .jp-section-title {
-    @apply text-2xl font-normal mb-6 pb-2 border-b border-gray-200 dark:border-gray-600 flex items-center;
-  }
-
-  /* Responsive grid with auto-fit */
-  .jp-auto-grid {
-    @apply grid grid-cols-1 gap-6;
-  }
-}
-
-/* Subtle animation for page elements */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-section {
-  animation: fadeInUp var(--animation-duration) ease-out forwards;
-}
-
-section:nth-child(2) {
-  animation-delay: calc(var(--animation-duration) * 0.1);
-}
-
-section:nth-child(3) {
-  animation-delay: calc(var(--animation-duration) * 0.2);
-}
-
-section:nth-child(4) {
-  animation-delay: calc(var(--animation-duration) * 0.3);
-}
-
-section:nth-child(5) {
-  animation-delay: calc(var(--animation-duration) * 0.4);
-}
-
-/* Japanese patterns for background styling */
-.bg-shoji {
-  background-color: var(--shoji-color);
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.01'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.dark .bg-shoji {
-  background-color: #111827;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* Japanese asanoha pattern */
-.bg-asanoha {
-  background-color: var(--washi-color);
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M0 20L20 0L10 0L0 10M40 20L20 40L30 40L40 30M0 40L20 20L20 40M40 0L20 20L20 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.dark .bg-asanoha {
-  background-color: #1e293b;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 20L20 0L10 0L0 10M40 20L20 40L30 40L40 30M0 40L20 20L20 40M40 0L20 20L20 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* Responsive typography - added directly instead of in @apply */
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 1.875rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-}
-
-/* Responsive container padding */
-@media (min-width: 640px) {
-  .container-jp {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-jp {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-}
-
-/* Responsive grid for jp-auto-grid */
-@media (min-width: 640px) {
-  .jp-auto-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .jp-auto-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
