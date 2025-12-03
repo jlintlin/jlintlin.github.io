@@ -1756,6 +1756,13 @@ html {
   }
 }
 
+/* Ensure content clears the fixed navigation on small screens */
+@media (max-width: 768px) {
+  body {
+    padding-top: 96px;
+  }
+}
+
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
